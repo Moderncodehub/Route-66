@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Restaurant & Bar | Route 66 Hotel</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="route66_nav_logo.png">
+
+<!-- CSS (same as your theme) -->
+<link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/plugins/slick.css">
+<link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+<link rel="stylesheet" href="assets/css/vendor/odometer.min.css">
+<link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
+<link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/vendor/fontawesome-pro.css">
+<link rel="stylesheet" href="assets/css/vendor/spacing.css">
+<link rel="stylesheet" href="assets/css/vendor/custom-font.css">
+<link rel="stylesheet" href="assets/css/main.css">
+
+<style>
+/* ==========================================================
+   NEW PAGE DESIGN (keeps your NAV + HERO + FOOTER exactly)
+   Everything below is for the NEW restaurant content only.
+   ========================================================== */
+:root{
+  --rb-navy:#0b2a55;
+  --rb-navy2:#083060;
+  --rb-text:#1d2b3a;
+  --rb-muted:#5b6b7a;
+  --rb-border:#e6edf5;
+  --rb-soft:#f6f9fd;
+  --rb-shadow: 0 18px 55px rgba(10, 30, 70, 0.12);
+  --rb-radius: 22px;
+}
+.rb-wrap{ padding: 80px 0; }
+.rb-soft{ background: var(--rb-soft); }
+.rb-container{ width:min(1240px, 92%); margin:0 auto; }
+
+.rb-title{ text-align:center; margin-bottom: 26px; }
+.rb-title h2{ margin:0 0 10px; font-weight: 900; color: var(--rb-navy); font-size: clamp(26px, 3vw, 38px); }
+.rb-title p{ margin:0 auto; max-width: 900px; color: var(--rb-muted); font-weight: 600; line-height: 1.6; }
+
+.rb-hero-row{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:18px;
+  align-items:stretch;
+}
+.rb-hero-card{
+  background:#fff;
+  border:1px solid rgba(11,42,85,.10);
+  border-radius: var(--rb-radius);
+  box-shadow: var(--rb-shadow);
+  overflow:hidden;
+}
+.rb-hero-card .rb-pad{ padding: 22px; }
+.rb-hero-kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  padding:8px 12px; border-radius: 999px;
+  background: #f2f7ff;
+  border:1px solid rgba(11,42,85,.10);
+  font-weight:900;
+  color: var(--rb-navy);
+  font-size: 12px;
+}
+.rb-hero-h{
+  margin: 12px 0 8px;
+  font-weight: 1000;
+  color: var(--rb-navy);
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.15;
+}
+.rb-hero-p{ margin:0; color: var(--rb-muted); font-weight:600; line-height:1.7; }
+
+.rb-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+.rb-btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-weight: 900;
+  border:1px solid rgba(11,42,85,.14);
+  background:#fff;
+  color: var(--rb-navy);
+  transition: .18s ease;
+}
+.rb-btn:hover{ transform: translateY(-2px); box-shadow: 0 16px 40px rgba(11,42,85,.12); }
+.rb-btn.primary{
+  background: var(--rb-navy);
+  color:#fff;
+  border-color: var(--rb-navy);
+}
+.rb-btn.primary:hover{ background: var(--rb-navy2); }
+
+.rb-info-grid{
+  display:grid;
+  grid-template-columns: repeat(12,1fr);
+  gap:14px;
+}
+.rb-info{
+  grid-column: span 3;
+  background:#fff;
+  border-radius: 18px;
+  border:1px solid rgba(11,42,85,.10);
+  box-shadow: var(--rb-shadow);
+  padding: 16px 16px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.rb-ico{
+  width:46px; height:46px;
+  border-radius: 16px;
+  background: #f2f7ff;
+  border:1px solid rgba(11,42,85,.10);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--rb-navy);
+  font-size: 18px;
+  flex: 0 0 auto;
+}
+.rb-info b{ display:block; color: var(--rb-navy); font-weight: 1000; line-height:1.1; }
+.rb-info span{ display:block; margin-top:4px; color: var(--rb-muted); font-weight: 600; font-size: 13px; line-height:1.35; }
+
+.rb-split{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+  align-items:stretch;
+}
+.rb-photo{
+  position:relative;
+  border-radius: var(--rb-radius);
+  overflow:hidden;
+  box-shadow: var(--rb-shadow);
+  border:1px solid rgba(11,42,85,.10);
+  min-height: 360px;
+  background:#e9eef7;
+}
+.rb-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.rb-photo .rb-badge{
+  position:absolute;
+  top:16px; left:16px;
+  display:inline-flex; gap:10px; align-items:center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  border:1px solid rgba(11,42,85,.12);
+  font-weight: 1000;
+  color: var(--rb-navy);
+  font-size: 12px;
+}
+
+.rb-menu-tabs{
+  background:#fff;
+  border-radius: var(--rb-radius);
+  border:1px solid rgba(11,42,85,.10);
+  box-shadow: var(--rb-shadow);
+  overflow:hidden;
+}
+.rb-tabs-top{
+  padding: 14px 14px;
+  background: linear-gradient(120deg, rgba(11,42,85,.06), rgba(27,102,255,.06));
+  border-bottom:1px solid rgba(11,42,85,.10);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.rb-tab{
+  padding:10px 12px;
+  border-radius: 14px;
+  font-weight: 1000;
+  font-size: 13px;
+  border:1px solid rgba(11,42,85,.14);
+  background:#fff;
+  color: var(--rb-navy);
+  cursor:pointer;
+  transition:.18s;
+}
+.rb-tab:hover{ transform: translateY(-1px); }
+.rb-tab.active{
+  background: var(--rb-navy);
+  color:#fff;
+  border-color: var(--rb-navy);
+}
+.rb-tabpanels{ padding: 16px 16px 18px; }
+.rb-panel{ display:none; }
+.rb-panel.active{ display:block; }
+
+.rb-item{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed rgba(11,42,85,.20);
+}
+.rb-item:last-child{ border-bottom:none; }
+.rb-item h4{
+  margin:0;
+  font-size: 14px;
+  font-weight: 1000;
+  color: var(--rb-text);
+}
+.rb-item p{
+  margin:6px 0 0;
+  color: var(--rb-muted);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.45;
+  max-width: 520px;
+}
+.rb-price{
+  white-space:nowrap;
+  font-weight:1000;
+  color: var(--rb-navy);
+  font-size: 13px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: #f2f7ff;
+  border:1px solid rgba(11,42,85,.10);
+}
+
+.rb-specials{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.rb-special{
+  grid-column: span 4;
+  background:#fff;
+  border-radius: 20px;
+  overflow:hidden;
+  border:1px solid rgba(11,42,85,.10);
+  box-shadow: var(--rb-shadow);
+  transition:.18s ease;
+}
+.rb-special:hover{ transform: translateY(-3px); }
+.rb-special .img{
+  height: 210px;
+  background:#e9eef7;
+  position:relative;
+}
+.rb-special .img img{ width:100%; height:100%; object-fit:cover; display:block; }
+.rb-special .tag{
+  position:absolute;
+  top:14px; left:14px;
+  padding: 8px 10px;
+  border-radius:999px;
+  background: rgba(255,255,255,.92);
+  border:1px solid rgba(11,42,85,.12);
+  font-weight:1000;
+  color: var(--rb-navy);
+  font-size: 12px;
+  display:inline-flex; align-items:center; gap:8px;
+}
+.rb-special .body{ padding: 16px 16px 18px; }
+.rb-special h3{ margin:0 0 8px; font-weight:1000; color: var(--rb-navy); font-size: 18px; }
+.rb-special p{ margin:0; color: var(--rb-muted); font-weight:600; line-height:1.55; }
+
+.rb-cta{
+  background: linear-gradient(120deg, rgba(11,42,85,1), rgba(27,102,255,1));
+  border-radius: 26px;
+  padding: 22px;
+  color:#fff;
+  box-shadow: 0 26px 80px rgba(10,30,70,.22);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.rb-cta h3{ margin:0 0 6px; font-weight:1000; color:#fff; font-size: 22px; }
+.rb-cta p{ margin:0; opacity:.92; font-weight:700; }
+.rb-cta .rb-btn{ border-color: rgba(255,255,255,.22); background: rgba(255,255,255,.12); color:#fff; }
+.rb-cta .rb-btn:hover{ background: rgba(255,255,255,.18); }
+.rb-cta .rb-btn.primary{ background:#fff; color: var(--rb-navy); border-color:#fff; }
+
+/* responsive */
+@media (max-width: 991px){
+  .rb-hero-row{ grid-template-columns: 1fr; }
+  .rb-info{ grid-column: span 12; }
+  .rb-split{ grid-template-columns: 1fr; }
+  .rb-photo{ min-height: 260px; }
+  .rb-special{ grid-column: span 12; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- preloader start -->
+<div id="preloader">
+  <div class="preloader-close">x</div>
+  <div class="sk-three-bounce">
+    <div class="sk-child sk-bounce1"></div>
+    <div class="sk-child sk-bounce2"></div>
+    <div class="sk-child sk-bounce3"></div>
+  </div>
+</div>
+<!-- preloader end -->
+
+<!-- Backtotop start -->
+<div class="backtotop-wrap cursor-pointer">
+  <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+  </svg>
+</div>
+<!-- Backtotop end -->
+
+<!-- Offcanvas area start -->
+<div class="fix">
+  <div class="offcanvas__area">
+    <div class="offcanvas__wrapper">
+      <div class="offcanvas__content">
+        <div class="offcanvas__top d-flex justify-content-between align-items-center">
+          <div class="offcanvas__logo">
+            <a href="index.html">
+              <img src="route66_nav_logo.png" alt="logo not found">
+            </a>
+          </div>
+          <div class="offcanvas__close">
+            <button class="offcanvas-close-icon animation--flip">
+              <span class="offcanvas-m-lines">
+                <span class="offcanvas-m-line line--1"></span>
+                <span class="offcanvas-m-line line--2"></span>
+                <span class="offcanvas-m-line line--3"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-menu fix"></div>
+
+        <div class="offcanvas__social">
+          <h3 class="offcanvas__title mb-20">Subscribe & Follow</h3>
+          <ul>
+             <li>   <a href="https://www.facebook.com/rt66hotel/"><i class="fab fa-facebook-f"></i></a> </li> 
+           <li><a href="https://www.instagram.com/route66hotel.spf?igsh=NnNyZnJpdWo2amVu/"><i class="fab fa-instagram"></i></a></li> 
+            <li><a href="https://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="offcanvas__btn d-sm-none">
+          <div class="header__btn-wrap">
+            <a class="rr-btn btn-hover-white"
+               href="https://live.ipms247.com/booking/book-rooms-route66hotelconferencecenter">
+              Book Now <span><i class="fa-regular fa-angle-right"></i></span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="offcanvas__overlay"></div>
+<div class="offcanvas__overlay-white"></div>
+<!-- Offcanvas area end -->
+
+<!-- Header area start (KEEP) -->
+<header>
+  <div id="header-sticky" class="header__area header4 rs-sticky">
+    <div class="container">
+      <div class="mega__menu-wrapper p-relative">
+        <div class="header__main">
+
+          <div class="header__left header2__left">
+            <div class="header__logo">
+              <a class="active" href="index.html">
+                <div class="logo">
+                  <img src="route66_nav_logo.png" alt="Route 66 Hotel">
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="header__middle">
+            <div class="mean__menu-wrapper d-none d-xl-block">
+              <div class="main-menu header2__menu">
+                <nav id="mobile-menu">
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About US </a></li>
+                     <li class="active"><a href="restaurant.html">Restaurant & Bar</a></li>
+                    <li><a href="events.html">Meetings & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="header__right header2__right">
+            <div class="header__action d-flex align-items-center">
+              <div class="header__btn-wrap d-none d-sm-inline-flex">
+                <a href="https://live.ipms247.com/booking/book-rooms-route66hotelconferencecenter"
+                   target="_blank" class="rr-btn-3">
+                  Reserve Now <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="header__hamburger ml-20 d-xl-none">
+                <div class="sidebar__toggle">
+                  <button class="bar-icon" aria-label="Open Menu">
+                    <span></span><span></span><span></span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Header area end -->
+
+<div id="popup-search-box">
+  <div class="box-inner-wrap d-flex align-items-center">
+    <form id="form" action="#" method="get" role="search">
+      <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+    </form>
+    <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+  </div>
+</div>
+
+<!-- HERO (KEEP YOUR EXISTING BREADCRUMB HERO) -->
+<div class="breadcrumb__area dark-green breadcrumb-space overflow-hidden position-relative z-1"
+     data-background="https://cf.bstatic.com/xdata/images/hotel/max1024x768/403278096.jpg?k=a26dc10bae7aa36ecf721086bdd58f3bc3f173637d9d92ecf6dd492b4d362b3a&o=">
+  <div class="breadcrumb__shapes"></div>
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-12">
+        <div class="breadcrumb__content">
+          <div class="breadcrumb__title-wrapper mb-15 mb-sm-10 mb-xs-5">
+            <h1 class="breadcrumb__title color-white wow fadeInLeft animated" data-wow-delay=".2s">Restaurant & Bar</h1>
+          </div>
+          <div class="breadcrumb__menu wow fadeInLeft animated" data-wow-delay=".4s">
+            <nav>
+              <ul>
+                <li><span><a href="index.html">Home</a></span></li>
+                <li class="active"><span>Restaurant & Bar</span></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==========================================================
+     NEW CONTENT STARTS HERE (ENTIRE PAGE CHANGED)
+     ========================================================== -->
+
+<!-- INTRO / QUICK RESERVE -->
+<section class="rb-wrap">
+  <div class="rb-container">
+
+    <div class="rb-hero-row">
+      <div class="rb-hero-card">
+        <div class="rb-pad">
+          <span class="rb-hero-kicker"><i class="fa-solid fa-utensils"></i> Dining • Drinks • Lounge</span>
+          <h2 class="rb-hero-h">Fresh, Comfort Food + A Relaxing Bar Lounge</h2>
+          <p class="rb-hero-p">
+            Enjoy breakfast, lunch, and dinner in a warm setting — then unwind with cocktails, beer, and wine at the bar.
+            Perfect for guests, families, and events.
+          </p>
+
+          <div class="rb-actions">
+            <a class="rb-btn primary" href="contact.html"><i class="fa-solid fa-phone"></i> Reserve / Contact</a>
+            <a class="rb-btn" href="events.html"><i class="fa-solid fa-calendar-check"></i> Event Dining</a>
+            <a class="rb-btn" href="gallery.html"><i class="fa-regular fa-images"></i> View Photos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rb-hero-card">
+        <div class="rb-pad">
+          <span class="rb-hero-kicker"><i class="fa-solid fa-star"></i> Today’s Highlights</span>
+
+          <div style="margin-top:14px; display:grid; gap:12px;">
+            <div style="border:1px solid rgba(11,42,85,.10); border-radius:18px; padding:14px; background:#fff;">
+              <b style="display:block;color:var(--rb-navy);font-weight:1000;">Chef Special</b>
+              <span style="display:block;margin-top:4px;color:var(--rb-muted);font-weight:700;">Ask staff for the daily rotating entrée.</span>
+            </div>
+            <div style="border:1px solid rgba(11,42,85,.10); border-radius:18px; padding:14px; background:#fff;">
+              <b style="display:block;color:var(--rb-navy);font-weight:1000;">Happy Hour</b>
+              <span style="display:block;margin-top:4px;color:var(--rb-muted);font-weight:700;">Mon–Thu • 4 PM – 6 PM</span>
+            </div>
+            <div style="border:1px solid rgba(11,42,85,.10); border-radius:18px; padding:14px; background:#fff;">
+              <b style="display:block;color:var(--rb-navy);font-weight:1000;">Group Dining</b>
+              <span style="display:block;margin-top:4px;color:var(--rb-muted);font-weight:700;">Reserve seating for meetings & events.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="height:18px"></div>
+
+    <div class="rb-info-grid">
+      <div class="rb-info">
+        <div class="rb-ico"><i class="fa-solid fa-clock"></i></div>
+        <div><b>Restaurant Hours</b><span>Daily: 6:30 AM – 10:00 PM</span></div>
+      </div>
+      <div class="rb-info">
+        <div class="rb-ico"><i class="fa-solid fa-martini-glass"></i></div>
+        <div><b>Bar Hours</b><span>Daily: 4:00 PM – 12:00 AM</span></div>
+      </div>
+      <div class="rb-info">
+        <div class="rb-ico"><i class="fa-solid fa-location-dot"></i></div>
+        <div><b>Location</b><span>Route 66 Hotel • Springfield, IL</span></div>
+      </div>
+      <div class="rb-info">
+        <div class="rb-ico"><i class="fa-solid fa-bell-concierge"></i></div>
+        <div><b>Service</b><span>Friendly staff • Event support available</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- MENU + PHOTO SPLIT -->
+<section class="rb-wrap rb-soft">
+  <div class="rb-container">
+
+    <div class="rb-title">
+      <h2>Menu</h2>
+      <p>Browse popular items by category. Replace the sample items/prices anytime.</p>
+    </div>
+
+    <div class="rb-split">
+      <div class="rb-photo">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1800&q=70" alt="Dining">
+        <span class="rb-badge"><i class="fa-solid fa-camera"></i> Real photos can go here</span>
+      </div>
+
+      <div class="rb-menu-tabs">
+        <div class="rb-tabs-top">
+          <button class="rb-tab active" type="button" data-tab="rb-breakfast"><i class="fa-solid fa-sun"></i> Breakfast</button>
+          <button class="rb-tab" type="button" data-tab="rb-lunch"><i class="fa-solid fa-burger"></i> Lunch & Dinner</button>
+          <button class="rb-tab" type="button" data-tab="rb-drinks"><i class="fa-solid fa-martini-glass-citrus"></i> Drinks</button>
+          <button class="rb-tab" type="button" data-tab="rb-dessert"><i class="fa-solid fa-ice-cream"></i> Dessert</button>
+        </div>
+
+        <div class="rb-tabpanels">
+          <!-- Breakfast -->
+          <div id="rb-breakfast" class="rb-panel active">
+            <div class="rb-item">
+              <div>
+                <h4>Classic Breakfast</h4>
+                <p>Eggs, toast, breakfast sides (customize options).</p>
+              </div>
+              <div class="rb-price">$9.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Pancakes / Waffles</h4>
+                <p>Served with syrup + butter (add fruit if needed).</p>
+              </div>
+              <div class="rb-price">$7.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Egg & Cheese Sandwich</h4>
+                <p>Warm sandwich with optional sausage/bacon.</p>
+              </div>
+              <div class="rb-price">$5.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Coffee / Tea</h4>
+                <p>Fresh brewed hot beverages.</p>
+              </div>
+              <div class="rb-price">$2.50</div>
+            </div>
+          </div>
+
+          <!-- Lunch -->
+          <div id="rb-lunch" class="rb-panel">
+            <div class="rb-item">
+              <div>
+                <h4>Route 66 Burger</h4>
+                <p>Juicy burger + fries. Add cheese/bacon optional.</p>
+              </div>
+              <div class="rb-price">$11.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Grilled Chicken Sandwich</h4>
+                <p>Grilled chicken with fresh toppings.</p>
+              </div>
+              <div class="rb-price">$12.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Caesar Salad</h4>
+                <p>Romaine, parmesan, croutons, Caesar dressing.</p>
+              </div>
+              <div class="rb-price">$8.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Steak Dinner</h4>
+                <p>Grilled steak with chef’s sides.</p>
+              </div>
+              <div class="rb-price">$19.99</div>
+            </div>
+          </div>
+
+          <!-- Drinks -->
+          <div id="rb-drinks" class="rb-panel">
+            <div class="rb-item">
+              <div>
+                <h4>Signature Cocktail</h4>
+                <p>Ask for today’s special cocktail creation.</p>
+              </div>
+              <div class="rb-price">$8.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Beer (Domestic / Imported)</h4>
+                <p>Selection varies — ask the bartender.</p>
+              </div>
+              <div class="rb-price">$5.50</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Wine Glass</h4>
+                <p>Red/White options available.</p>
+              </div>
+              <div class="rb-price">$7.00</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Soft Drinks</h4>
+                <p>Soda, juice, non-alcoholic drinks.</p>
+              </div>
+              <div class="rb-price">$2.99</div>
+            </div>
+          </div>
+
+          <!-- Dessert -->
+          <div id="rb-dessert" class="rb-panel">
+            <div class="rb-item">
+              <div>
+                <h4>Chocolate Cake</h4>
+                <p>Rich chocolate with a smooth finish.</p>
+              </div>
+              <div class="rb-price">$6.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Ice Cream Scoop</h4>
+                <p>Vanilla, chocolate, strawberry (as available).</p>
+              </div>
+              <div class="rb-price">$3.99</div>
+            </div>
+            <div class="rb-item">
+              <div>
+                <h4>Cheesecake</h4>
+                <p>Classic cheesecake with topping options.</p>
+              </div>
+              <div class="rb-price">$6.99</div>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:center;margin-top:16px;">
+            <a class="rb-btn primary" href="assets/menu.pdf" target="_blank"><i class="fa-solid fa-file-pdf"></i> View Full Menu PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHEF SPECIALS -->
+<section class="rb-wrap">
+  <div class="rb-container">
+    <div class="rb-title">
+      <h2>Chef Specials</h2>
+      <p>Seasonal favorites and rotating daily specials.</p>
+    </div>
+
+    <div class="rb-specials">
+      <article class="rb-special">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1600&q=70" alt="">
+          <span class="tag"><i class="fa-solid fa-star"></i> Popular</span>
+        </div>
+        <div class="body">
+          <h3>Grilled Steak Plate</h3>
+          <p>Juicy grilled steak, chef sides, and house sauce.</p>
+        </div>
+      </article>
+
+      <article class="rb-special">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1600&q=70" alt="">
+          <span class="tag"><i class="fa-solid fa-burger"></i> Signature</span>
+        </div>
+        <div class="body">
+          <h3>Route 66 Burger</h3>
+          <p>Loaded burger, melted cheese, and crispy fries.</p>
+        </div>
+      </article>
+
+      <article class="rb-special">
+        <div class="img">
+          <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=70" alt="">
+          <span class="tag"><i class="fa-solid fa-leaf"></i> Fresh</span>
+        </div>
+        <div class="body">
+          <h3>Chef Salad Bowl</h3>
+          <p>Fresh greens, toppings, and your choice of dressing.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="rb-wrap rb-soft">
+  <div class="rb-container">
+    <div class="rb-cta">
+      <div>
+        <h3>Reserve a table or book dining for your event</h3>
+        <p>We’ll help with seating, group dining, and catering options.</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="rb-btn primary" href="contact.html"><i class="fa-solid fa-phone"></i> Contact / Reserve</a>
+        <a class="rb-btn" href="events.html"><i class="fa-solid fa-calendar-check"></i> Meetings & Events</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================
+     NEW CONTENT ENDS HERE
+     ========================================================== -->
+
+<div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+<!-- Footer area start (KEEP) -->
+<footer>
+  <section class="footer__area-common dark overflow-hidden position-relative z-1">
+    <div class="container">
+      <div class="footer2__top d-flex justify-content-between pt-80 pb-30">
+        <div class="footer__logo wow fadeInLeft animated" data-wow-delay=".2s">
+          <a href="index.html">
+            <img src="route66_nav_logo.png" alt="logo not found">
+          </a>
+        </div>
+        <div class="footer2__right d-flex wow fadeInLeft animated" data-wow-delay=".3s">
+          <div class="footer2__right-social d-flex">
+            <a href="https://www.facebook.com/rt66hotel/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/route66hotel.spf?igsh=NnNyZnJpdWo2amVu/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://vimeo.com/"><i class="fa-brands fa-vimeo-v"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-minus-40 footer-wrap">
+        <div class="col-lg-4">
+          <div class="footer__widget footer__widget-item-1">
+            <div class="footer__content footer__content-2">
+              <p>Sign up to our weekly newsletter to get the latest updates.</p>
+            </div>
+            <div class="footer__widget-from mt-25">
+              <input class="book__form-control book__form-control-2" type="email" name="email" placeholder="Your email...">
+              <a class="rr-btn-2" href="contact.html">Subscribe <i class="fa-solid fa-plus"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-6">
+          <div class="footer__widget footer__widget-item-2">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Quick Links</h4>
+            </div>
+            <div class="footer__link footer__link-2">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About US </a></li>
+                <li><a href="events.html">Meetings & Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="footer__widget footer__widget-item-3">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Services</h4>
+            </div>
+            <div class="footer__link footer__link-2">
+              <ul>
+                    <li><a href="about-us.html">About US </a></li>
+                <li><a href="restaurant.html">Restaurant & Bar</a></li>
+                <li><a href="gaming.html">Gaming</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer__widget footer__widget-item-4">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Contact</h4>
+            </div>
+
+            <div class="footer__subscribe footer__subscribe-2 subscribe-2 d-flex mt-15">
+              <ul>
+                <li>
+                  <a href="https://maps.app.goo.gl/TFdYd4QEzwrRHJY38">
+                    <h5 class="footer__subscribe-2-heading">Address</h5>
+                    <span class="mail mail-2">625 E St Joseph St, Springfield, IL 62703</span>
+                  </a>
+                </li>
+                <li class="gap-10">
+                  <h5 class="footer__subscribe-2-heading">Phone</h5>
+                  <a class="number" href="tel:406555-0120">(217) 529-6626</a>
+                </li>
+                <li>
+                  <a href="mailto:route66hotel@gmail.com">
+                    <h5 class="footer__subscribe-2-heading">Email</h5>
+                    <span class="text text-2">route66hotel@gmail.com</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom-wrapper dark">
+      <div class="container">
+        <div class="footer__bottom">
+          <div class="footer__copyright footer__copyright-2">
+<p class="copy">
+  © <a href="index.html">Route 66 Hotel</a> 2026 | All Rights Reserved
+  <span class="sep"> | </span>
+  Website made by
+  <a href="https://moderncodehub.com" target="_blank" rel="noopener">Modern Code Hub</a>
+ </p>
+          </div>
+
+          <div class="footer__copyright-menu footer__copyright-menu-2">
+            <ul>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</footer>
+<!-- Footer area end -->
+
+<!-- JS (same as your theme) -->
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/plugins/waypoints.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="assets/js/plugins/meanmenu.min.js"></script>
+<script src="assets/js/plugins/swiper.min.js"></script>
+<script src="assets/js/plugins/wow.js"></script>
+<script src="assets/js/vendor/magnific-popup.min.js"></script>
+<script src="assets/js/vendor/type.js"></script>
+<script src="assets/js/vendor/vanilla-tilt.js"></script>
+<script src="assets/js/plugins/nice-select.min.js"></script>
+<script src="assets/js/vendor/odometer.min.js"></script>
+<script src="assets/js/vendor/jquery-ui.min.js"></script>
+<script src="assets/js/plugins/parallax-scroll.js"></script>
+<script src="assets/js/plugins/jquery.countdown.min.js"></script>
+<script src="assets/js/vendor/smooth-scroll.js"></script>
+<script src="assets/js/plugins/isotope-docs.min.js"></script>
+<script src="assets/js/plugins/slick.min.js"></script>
+<script src="assets/js/vendor/ajax-form.js"></script>
+<script src="assets/js/main.js"></script>
+
+<!-- Tiny JS for the menu tabs (NEW) -->
+<script>
+  (function(){
+    const tabs = document.querySelectorAll('.rb-tab');
+    const panels = document.querySelectorAll('.rb-panel');
+
+    tabs.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabs.forEach(t=>t.classList.remove('active'));
+        btn.classList.add('active');
+
+        const id = btn.getAttribute('data-tab');
+        panels.forEach(p=>p.classList.remove('active'));
+        const active = document.getElementById(id);
+        if(active) active.classList.add('active');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

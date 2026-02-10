@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meetings & Events | Route 66 Hotel</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="route66_nav_logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia&display=swap" rel="stylesheet">
+
+<!-- Template CSS -->
+<link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/plugins/slick.css">
+<link rel="stylesheet" href="assets/css/vendor/animate.min.css">
+<link rel="stylesheet" href="assets/css/vendor/odometer.min.css">
+<link rel="stylesheet" href="assets/css/plugins/swiper.min.css">
+<link rel="stylesheet" href="assets/css/vendor/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/vendor/fontawesome-pro.css">
+<link rel="stylesheet" href="assets/css/vendor/spacing.css">
+<link rel="stylesheet" href="assets/css/vendor/custom-font.css">
+<link rel="stylesheet" href="assets/css/main.css">
+
+<style>
+  /* ========= Page-only small overrides (safe with your template) ========= */
+  :root{
+    --rt66-navy:#0b2a55;
+    --rt66-navy2:#083060;
+    --rt66-blue:#1b66ff;
+    --rt66-text:#1c2430;
+    --rt66-muted:#5b6b7a;
+    --rt66-bg:#f7f9fc;
+    --rt66-shadow:0 18px 55px rgba(10, 30, 70, 0.12);
+    --rt66-radius:18px;
+  }
+  body{ background: var(--rt66-bg); }
+
+  .rt66-wrap{ position:relative; z-index:1; }
+
+  /* ===== Hero ===== */
+  .rt66-hero{
+    position:relative;
+    min-height: 420px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    border-bottom: 1px solid rgba(11,42,85,.10);
+    background: #0b2a55;
+  }
+  .rt66-hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,.72) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.20) 100%),
+      url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=70")
+      center/cover no-repeat;
+    filter: saturate(1.05) contrast(1.02);
+    transform: scale(1.02);
+  }
+  .rt66-hero .rt66-hero-inner{
+    position:relative;
+    padding: 110px 0 80px;
+    color:#fff;
+  }
+  .rt66-hero h1{
+    color:#fff;
+    font-weight: 900;
+    letter-spacing:.2px;
+    margin:0 0 12px;
+    font-size: clamp(34px, 4.2vw, 54px);
+    line-height:1.08;
+    text-shadow: 0 10px 30px rgba(0,0,0,.35);
+  }
+  .rt66-hero p{
+    color: rgba(255,255,255,.92);
+    font-weight: 600;
+    margin:0 0 20px;
+    max-width: 760px;
+  }
+  .rt66-hero-actions{
+    display:flex; gap:12px; flex-wrap:wrap;
+    margin-top: 18px;
+  }
+  .rt66-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 16px;
+    border-radius: 14px;
+    font-weight: 800;
+    border:1px solid rgba(255,255,255,.24);
+    background: rgba(255,255,255,.12);
+    color:#fff;
+    backdrop-filter: blur(8px);
+    transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  }
+  .rt66-btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,.18); }
+  .rt66-btn.primary{
+    background:#fff;
+    color: var(--rt66-navy);
+    border-color:#fff;
+    box-shadow: 0 18px 55px rgba(0,0,0,.18);
+  }
+  .rt66-btn.primary:hover{ background:#f3f7ff; }
+
+  /* ===== Section Title ===== */
+  .rt66-section{ padding: 80px 0; }
+  .rt66-title{ text-align:center; margin-bottom: 28px; }
+  .rt66-title h2{
+    color: var(--rt66-navy);
+    font-weight: 900;
+    margin:0 0 10px;
+    font-size: clamp(26px, 3vw, 38px);
+  }
+  .rt66-title p{
+    margin:0 auto;
+    max-width: 860px;
+    color: var(--rt66-muted);
+    font-weight: 600;
+  }
+
+  /* ===== Cards ===== */
+  .rt66-card{
+    background:#fff;
+    border-radius: var(--rt66-radius);
+    box-shadow: var(--rt66-shadow);
+    overflow:hidden;
+    height: 100%;
+  }
+  .rt66-card-img{
+    height: 220px;
+    background:#eaeef7;
+    position:relative;
+  }
+  .rt66-card-img img{
+    width:100%; height:100%;
+    object-fit: cover;
+    display:block;
+    filter: saturate(1.02) contrast(1.02);
+  }
+  .rt66-card-body{ padding: 18px 18px 20px; }
+  .rt66-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 10px;
+    border-radius: 999px;
+    background: #f3f7ff;
+    color: var(--rt66-navy);
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+  .rt66-card-body h3{
+    margin:0 0 8px;
+    font-weight: 900;
+    color: var(--rt66-navy);
+    font-size: 20px;
+  }
+  .rt66-card-body p{
+    margin:0;
+    color: var(--rt66-muted);
+    font-weight: 600;
+    line-height: 1.55;
+  }
+
+  /* ===== Feature mini cards ===== */
+  .rt66-mini{
+    background:#fff;
+    border-radius: 16px;
+    box-shadow: var(--rt66-shadow);
+    padding: 14px 14px;
+    display:flex;
+    gap:12px;
+    height: 100%;
+  }
+  .rt66-mini i{
+    width:42px;height:42px;
+    border-radius: 14px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#f3f7ff;
+    color: var(--rt66-navy);
+    font-size: 18px;
+    flex: 0 0 auto;
+  }
+  .rt66-mini b{
+    display:block;
+    color: var(--rt66-navy);
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .rt66-mini span{
+    display:block;
+    color: var(--rt66-muted);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  /* ===== CTA Strip ===== */
+  .rt66-cta{
+    background: linear-gradient(120deg, rgba(11,42,85,1), rgba(27,102,255,1));
+    border-radius: 22px;
+    padding: 22px;
+    color:#fff;
+    box-shadow: 0 22px 70px rgba(10,30,70,.18);
+  }
+  .rt66-cta h3{
+    margin:0;
+    font-weight: 900;
+    font-size: 22px;
+    color:#fff;
+  }
+  .rt66-cta p{
+    margin:6px 0 0;
+    font-weight: 600;
+    opacity: .92;
+    color:#fff;
+  }
+  .rt66-cta-actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .rt66-cta-actions a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    font-weight: 800;
+  }
+  .rt66-cta-actions a.white{ background:#fff; color: var(--rt66-navy); }
+  .rt66-cta-actions a.ghost{
+    background: rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.22);
+    color:#fff;
+    backdrop-filter: blur(8px);
+  }
+/* ================= EVX EVENT SECTION (HARD-ISOLATED) ================= */
+.evx-wrap{
+  padding:70px 0;
+  background:#f4f7fb;
+}
+
+/* GRID */
+.evx-grid{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap:28px;
+  align-items:stretch;
+}
+
+/* LEFT PANEL */
+.evx-left{
+  background:linear-gradient(135deg,#1f3f74,#3f6fcb);
+  color:#fff;
+  border-radius:18px;
+  padding:38px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.evx-badge{
+  background:rgba(255,255,255,0.18);
+  padding:6px 14px;
+  border-radius:20px;
+  font-weight:800;
+  width:max-content;
+  margin-bottom:14px;
+}
+
+.evx-left h2{
+  font-size:40px;
+  font-weight:900;
+  margin:0 0 10px;
+  color:#fff;
+}
+
+.evx-left p{
+  margin:0 0 22px;
+  opacity:.95;
+  font-weight:600;
+  line-height:1.6;
+}
+
+.evx-features{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.evx-feature{
+  background:rgba(255,255,255,0.15);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.evx-feature i{font-size:18px;margin-top:2px;}
+.evx-feature b{display:block;font-weight:900;}
+.evx-feature span{display:block;opacity:.95;font-weight:600;font-size:13px;}
+
+/* RIGHT PANEL */
+.evx-formbox{
+  background:#fff;
+  border-radius:18px;
+  padding:34px;
+  box-shadow:0 18px 55px rgba(0,0,0,0.08);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.evx-formbox h3{
+  margin:0 0 4px;
+  font-size:26px;
+  font-weight:900;
+  color:#0b2a55;
+}
+
+.evx-sub{
+  margin:0 0 18px;
+  color:#6b7280;
+  font-weight:600;
+}
+
+/* ---- HARD RESET ONLY INSIDE EVX FORM (to beat main.css) ---- */
+.evx-wrap .evx-form,
+.evx-wrap .evx-field,
+.evx-wrap .evx-label,
+.evx-wrap input,
+.evx-wrap select,
+.evx-wrap textarea,
+.evx-wrap button,
+.evx-wrap a{
+  box-sizing:border-box !important;
+  font-family:inherit !important;
+}
+
+/* FIELD GRID */
+.evx-form{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap:14px;
+}
+
+.evx-field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.evx-field.full{ grid-column:1 / -1; }
+
+.evx-label{
+  font-weight:900 !important;
+  font-size:13px !important;
+  color:#0b2a55 !important;
+  line-height:1.1 !important;
+}
+
+/* Controls: force SAME HEIGHT + baseline */
+.evx-control{
+  width:100% !important;
+  height:48px !important;               /* KEY: same height */
+  padding:12px 14px !important;
+  border-radius:12px !important;
+  border:1px solid #d7dde7 !important;
+  background:#fbfcff !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  line-height:24px !important;
+  outline:none !important;
+  margin:0 !important;
+  display:block !important;
+}
+
+.evx-control:focus{
+  border-color:#1b66ff !important;
+  box-shadow:0 0 0 4px rgba(27,102,255,.14) !important;
+}
+
+/* Select: remove weird template styling */
+.evx-select{
+  appearance:none !important;
+  -webkit-appearance:none !important;
+  -moz-appearance:none !important;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #0b2a55 50%),
+    linear-gradient(135deg, #0b2a55 50%, transparent 50%) !important;
+  background-position:
+    calc(100% - 18px) calc(50% - 2px),
+    calc(100% - 12px) calc(50% - 2px) !important;
+  background-size:6px 6px, 6px 6px !important;
+  background-repeat:no-repeat !important;
+  padding-right:38px !important;
+}
+
+/* Textarea */
+.evx-textarea{
+  height:auto !important;
+  min-height:120px !important;
+  padding:14px !important;
+  line-height:1.5 !important;
+  resize:vertical !important;
+}
+
+/* Actions */
+.evx-actions{
+  grid-column:1 / -1;
+  display:flex;
+  gap:10px;
+  margin-top:6px;
+  align-items:center;
+}
+
+.evx-submit{
+  height:48px;
+  padding:0 18px;
+  border-radius:12px;
+  background:#0b2a55;
+  color:#fff;
+  border:none;
+  font-weight:900;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+
+.evx-submit:hover{ background:#083060; }
+
+.evx-contact{
+  height:48px;
+  padding:0 18px;
+  border-radius:12px;
+  border:1px solid #cfd6e2;
+  color:#0b2a55;
+  font-weight:900;
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+}
+
+.evx-contact:hover{ border-color:#0b2a55; }
+
+/* Mobile */
+@media(max-width:768px){
+  .evx-grid{ grid-template-columns:1fr; }
+  .evx-form{ grid-template-columns:1fr; }
+  .evx-features{ grid-template-columns:1fr; }
+  .evx-actions{ flex-wrap:wrap; }
+  .evx-submit, .evx-contact{ width:100%; justify-content:center; }
+}
+
+  
+</style>
+</head>
+
+<body>
+
+
+<!-- preloader start -->
+<div id="preloader">
+  <div class="preloader-close">x</div>
+  <div class="sk-three-bounce">
+    <div class="sk-child sk-bounce1"></div>
+    <div class="sk-child sk-bounce2"></div>
+    <div class="sk-child sk-bounce3"></div>
+  </div>
+</div>
+<!-- preloader end -->
+
+<!-- Backtotop start -->
+<div class="backtotop-wrap cursor-pointer">
+  <svg class="backtotop-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+    <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+  </svg>
+</div>
+<!-- Backtotop end -->
+
+<!-- Offcanvas area start -->
+<div class="fix">
+  <div class="offcanvas__area">
+    <div class="offcanvas__wrapper">
+      <div class="offcanvas__content">
+        <div class="offcanvas__top d-flex justify-content-between align-items-center">
+          <div class="offcanvas__logo">
+            <a href="index.html">
+              <img src="route66_nav_logo.png" alt="logo not found">
+            </a>
+          </div>
+          <div class="offcanvas__close">
+            <button class="offcanvas-close-icon animation--flip">
+              <span class="offcanvas-m-lines">
+                <span class="offcanvas-m-line line--1"></span>
+                <span class="offcanvas-m-line line--2"></span>
+                <span class="offcanvas-m-line line--3"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-menu fix"></div>
+
+        <div class="offcanvas__social">
+          <h3 class="offcanvas__title mb-20">Subscribe & Follow</h3>
+          <ul>
+             <li>   <a href="https://www.facebook.com/rt66hotel/"><i class="fab fa-facebook-f"></i></a> </li> 
+           <li><a href="https://www.instagram.com/route66hotel.spf?igsh=NnNyZnJpdWo2amVu/"><i class="fab fa-instagram"></i></a></li> 
+            <li><a href="https://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+            <li><a href="https://linkedin.com/"><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+
+        <div class="offcanvas__btn d-sm-none">
+          <div class="header__btn-wrap">
+            <a class="rr-btn btn-hover-white"
+               href="https://live.ipms247.com/booking/book-rooms-route66hotelconferencecenter">
+              Book Now <span><i class="fa-regular fa-angle-right"></i></span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="offcanvas__overlay"></div>
+<div class="offcanvas__overlay-white"></div>
+<!-- Offcanvas area end -->
+
+<!-- Header area start (KEEP) -->
+<header>
+  <div id="header-sticky" class="header__area header4 rs-sticky">
+    <div class="container">
+      <div class="mega__menu-wrapper p-relative">
+        <div class="header__main">
+
+          <div class="header__left header2__left">
+            <div class="header__logo">
+              <a class="active" href="index.html">
+                <div class="logo">
+                  <img src="route66_nav_logo.png" alt="Route 66 Hotel">
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="header__middle">
+            <div class="mean__menu-wrapper d-none d-xl-block">
+              <div class="main-menu header2__menu">
+                <nav id="mobile-menu">
+                  <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About US </a></li>
+                     <li class="active"><a href="restaurant.html">Restaurant & Bar</a></li>
+                    <li><a href="events.html">Meetings & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="header__right header2__right">
+            <div class="header__action d-flex align-items-center">
+              <div class="header__btn-wrap d-none d-sm-inline-flex">
+                <a href="https://live.ipms247.com/booking/book-rooms-route66hotelconferencecenter"
+                   target="_blank" class="rr-btn-3">
+                  Reserve Now <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <div class="header__hamburger ml-20 d-xl-none">
+                <div class="sidebar__toggle">
+                  <button class="bar-icon" aria-label="Open Menu">
+                    <span></span><span></span><span></span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div id="popup-search-box">
+    <div class="box-inner-wrap d-flex align-items-center">
+        <form id="form" action="#" method="get" role="search">
+            <input id="popup-search" type="text" name="s" placeholder="Type keywords here...">
+        </form>
+        <div class="search-close"><i class="fa-sharp fa-regular fa-xmark"></i></div>
+    </div>
+</div>
+<!-- Header area end -->
+
+<main class="rt66-wrap">
+
+  <!-- HERO -->
+  <section class="rt66-hero">
+    <div class="container">
+      <div class="rt66-hero-inner">
+        <h1>Meetings & Events</h1>
+        <p>Host weddings, conferences, parties, and corporate gatherings with flexible spaces, great service, and a convenient location.</p>
+
+        <div class="rt66-hero-actions">
+          <a class="rt66-btn primary" href="#event-form"><i class="fa-solid fa-calendar-check"></i> Request a Quote</a>
+          <a class="rt66-btn" href="gallery.html"><i class="fa-regular fa-images"></i> View Event Photos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT TYPES -->
+  <section class="rt66-section">
+    <div class="container">
+
+      <div class="rt66-title">
+        <h2>Perfect for Every Occasion</h2>
+        <p>From intimate celebrations to large conferences, our venue can be tailored to your needs.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="rt66-card">
+            <div class="rt66-card-img">
+              <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=70" alt="Weddings">
+            </div>
+            <div class="rt66-card-body">
+              <span class="rt66-pill"><i class="fa-solid fa-heart"></i> Weddings</span>
+              <h3>Weddings & Receptions</h3>
+              <p>Celebrate your special day with elegant spaces, dining options, and a helpful events team.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="rt66-card">
+            <div class="rt66-card-img">
+              <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1600&q=70" alt="Corporate">
+            </div>
+            <div class="rt66-card-body">
+              <span class="rt66-pill"><i class="fa-solid fa-briefcase"></i> Corporate</span>
+              <h3>Meetings & Conferences</h3>
+              <p>Professional setups for meetings, trainings, and conferences with flexible layouts.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+          <div class="rt66-card">
+            <div class="rt66-card-img">
+              <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1600&q=70" alt="Celebrations">
+            </div>
+            <div class="rt66-card-body">
+              <span class="rt66-pill"><i class="fa-solid fa-champagne-glasses"></i> Celebrations</span>
+              <h3>Parties & Banquets</h3>
+              <p>Birthdays, anniversaries, reunions, and private parties—make it memorable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURES -->
+      <div class="rt66-title" style="margin-top:40px;">
+        <h2>Event Features</h2>
+        <p>Everything you need to plan a smooth and successful event.</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-people-group"></i><div><b>Flexible Capacity</b><span>Spaces for small groups to large gatherings.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-table"></i><div><b>Custom Layouts</b><span>Banquet, classroom, theater, and more.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-wifi"></i><div><b>Wi-Fi Access</b><span>Reliable internet for meetings & presentations.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-utensils"></i><div><b>Catering Options</b><span>Food & beverages available for your event.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-microphone-lines"></i><div><b>A/V Support</b><span>Presentation support (as available).</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-car"></i><div><b>Easy Parking</b><span>Convenient access for guests and attendees.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-bed"></i><div><b>Stay On-Site</b><span>Rooms available for out-of-town guests.</span></div></div></div>
+        <div class="col-lg-3 col-md-6"><div class="rt66-mini"><i class="fa-solid fa-handshake"></i><div><b>Event Assistance</b><span>Support to help plan and coordinate.</span></div></div></div>
+      </div>
+
+      <!-- CTA -->
+      <div class="rt66-cta mt-4">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-7">
+            <h3>Ready to plan your event?</h3>
+            <p>Send us your date and guest count — we’ll get back to you with options.</p>
+          </div>
+          <div class="col-lg-5">
+            <div class="rt66-cta-actions">
+              <a class="white" href="#event-form"><i class="fa-solid fa-paper-plane"></i> Request Quote</a>
+              <a class="ghost" href="contact.html"><i class="fa-solid fa-phone"></i> Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+<section class="evx-wrap" id="event-form">
+  <div class="container">
+    <div class="evx-grid">
+
+      <!-- LEFT INFO -->
+      <div class="evx-left">
+        <span class="evx-badge">Meetings & Events</span>
+        <h2>Request an Event Quote</h2>
+        <p style="color: white;">Share your event details and our team will respond with availability, setup options, and pricing.</p>
+
+        <div class="evx-features">
+          <div class="evx-feature">
+<i class="fa-solid fa-user-group"></i>
+            <div><b>Flexible Spaces</b><span>Weddings • Conferences • Parties</span></div>
+          </div>
+          <div class="evx-feature">
+            <i class="fa-solid fa-wifi"></i>
+            <div><b>Business Ready</b><span>Wi-Fi & setup options</span></div>
+          </div>
+          <div class="evx-feature">
+            <i class="fa-solid fa-utensils"></i>
+            <div><b>Food & Beverage</b><span>Catering add-ons available</span></div>
+          </div>
+          <div class="evx-feature">
+            <i class="fa-solid fa-phone"></i>
+            <div><b>Quick Contact</b><span>Call us for urgent requests</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT FORM -->
+      <div class="evx-formbox">
+        <h3>Send Details</h3>
+        <p class="evx-sub">We usually respond within 24 hours.</p>
+
+        <form class="evx-form">
+
+          <div class="evx-field">
+            <div class="evx-label">Full Name</div>
+            <input class="evx-control" type="text" placeholder="Your Name" required>
+          </div>
+
+          <div class="evx-field">
+            <div class="evx-label">Email</div>
+            <input class="evx-control" type="email" placeholder="you@email.com" required>
+          </div>
+
+          <div class="evx-field">
+            <div class="evx-label">Phone</div>
+            <input class="evx-control" type="tel" placeholder="(217) ___-____">
+          </div>
+
+          <div class="evx-field">
+            <div class="evx-label">Event Type</div>
+            <select class="evx-control evx-select">
+              <option value="">Choose...</option>
+              <option>Wedding / Reception</option>
+              <option>Conference / Meeting</option>
+              <option>Party / Banquet</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="evx-field">
+            <div class="evx-label">Preferred Date</div>
+            <input class="evx-control" type="date">
+          </div>
+
+          <div class="evx-field">
+            <div class="evx-label">Estimated Guests</div>
+            <input class="evx-control" type="number" placeholder="e.g. 80">
+          </div>
+
+          <div class="evx-field full">
+            <div class="evx-label">Message</div>
+            <textarea class="evx-control evx-textarea" placeholder="Tell us timing, seating setup, food needs, etc."></textarea>
+          </div>
+
+          <div class="evx-actions">
+            <button type="submit" class="evx-submit">
+              <i class="fa-solid fa-paper-plane"></i> Submit Request
+            </button>
+
+            <a href="contact.html" class="evx-contact">
+              <i class="fa-solid fa-phone"></i> Contact Us
+            </a>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</main>
+
+
+<!-- Footer area start (KEEP) -->
+<footer>
+  <section class="footer__area-common dark overflow-hidden position-relative z-1">
+    <div class="container">
+      <div class="footer2__top d-flex justify-content-between pt-80 pb-30">
+        <div class="footer__logo wow fadeInLeft animated" data-wow-delay=".2s">
+          <a href="index.html">
+            <img src="route66_nav_logo.png" alt="logo not found">
+          </a>
+        </div>
+        <div class="footer2__right d-flex wow fadeInLeft animated" data-wow-delay=".3s">
+          <div class="footer2__right-social d-flex">
+            <a href="https://www.facebook.com/rt66hotel/"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/route66hotel.spf?igsh=NnNyZnJpdWo2amVu/"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.pinterest.com/"><i class="fa-brands fa-pinterest-p"></i></a>
+            <a href="https://vimeo.com/"><i class="fa-brands fa-vimeo-v"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-minus-40 footer-wrap">
+        <div class="col-lg-4">
+          <div class="footer__widget footer__widget-item-1">
+            <div class="footer__content footer__content-2">
+              <p>Sign up to our weekly newsletter to get the latest updates.</p>
+            </div>
+            <div class="footer__widget-from mt-25">
+              <input class="book__form-control book__form-control-2" type="email" name="email" placeholder="Your email...">
+              <a class="rr-btn-2" href="contact.html">Subscribe <i class="fa-solid fa-plus"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 col-sm-6">
+          <div class="footer__widget footer__widget-item-2">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Quick Links</h4>
+            </div>
+            <div class="footer__link footer__link-2">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="rooms.html">Rooms</a></li>
+                <li><a href="events.html">Meetings & Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-6">
+          <div class="footer__widget footer__widget-item-3">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Services</h4>
+            </div>
+            <div class="footer__link footer__link-2">
+              <ul>
+                    <li><a href="about-us.html">About US </a></li>
+                <li><a href="restaurant.html">Restaurant & Bar</a></li>
+                <li><a href="gaming.html">Gaming</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <div class="footer__widget footer__widget-item-4">
+            <div class="footer__widget-title footer__widget-title-2">
+              <h4>Contact</h4>
+            </div>
+
+            <div class="footer__subscribe footer__subscribe-2 subscribe-2 d-flex mt-15">
+              <ul>
+                <li>
+                  <a href="https://maps.app.goo.gl/TFdYd4QEzwrRHJY38">
+                    <h5 class="footer__subscribe-2-heading">Address</h5>
+                    <span class="mail mail-2">625 E St Joseph St, Springfield, IL 62703</span>
+                  </a>
+                </li>
+                <li class="gap-10">
+                  <h5 class="footer__subscribe-2-heading">Phone</h5>
+                  <a class="number" href="tel:406555-0120">(217) 529-6626</a>
+                </li>
+                <li>
+                  <a href="mailto:route66hotel@gmail.com">
+                    <h5 class="footer__subscribe-2-heading">Email</h5>
+                    <span class="text text-2">route66hotel@gmail.com</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom-wrapper dark">
+      <div class="container">
+        <div class="footer__bottom">
+          <div class="footer__copyright footer__copyright-2">
+<p class="copy">
+  © <a href="index.html">Route 66 Hotel</a> 2026 | All Rights Reserved
+  <span class="sep"> | </span>
+  Website made by
+  <a href="https://moderncodehub.com" target="_blank" rel="noopener">Modern Code Hub</a>
+ </p>
+          </div>
+
+          <div class="footer__copyright-menu footer__copyright-menu-2">
+            <ul>
+              <li><a href="#">Terms & Condition</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</footer>
+<!-- Footer area end -->
+
+<!-- JS here -->
+<script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+<script src="assets/js/plugins/waypoints.min.js"></script>
+<script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+<script src="assets/js/plugins/meanmenu.min.js"></script>
+<script src="assets/js/plugins/swiper.min.js"></script>
+<script src="assets/js/plugins/wow.js"></script>
+<script src="assets/js/vendor/magnific-popup.min.js"></script>
+<script src="assets/js/vendor/type.js"></script>
+<script src="assets/js/vendor/vanilla-tilt.js"></script>
+<script src="assets/js/plugins/nice-select.min.js"></script>
+<script src="assets/js/vendor/odometer.min.js"></script>
+<script src="assets/js/vendor/jquery-ui.min.js"></script>
+<script src="assets/js/plugins/parallax-scroll.js"></script>
+<script src="assets/js/plugins/jquery.countdown.min.js"></script>
+<script src="assets/js/vendor/smooth-scroll.js"></script>
+<script src="assets/js/plugins/isotope-docs.min.js"></script>
+<script src="assets/js/plugins/slick.min.js"></script>
+<script src="assets/js/vendor/ajax-form.js"></script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>
